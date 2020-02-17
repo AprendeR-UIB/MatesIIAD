@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="repas-de-la-distribucio-normal.html">
-
+<link rel="next" href="intervals-de-confianca.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -153,6 +153,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7.1" data-path="estimacio-puntual.html"><a href="estimacio-puntual.html#estimacio-de-poblacions-numerades"><i class="fa fa-check"></i><b>2.7.1</b> Estimació de poblacions numerades</a></li>
 <li class="chapter" data-level="2.7.2" data-path="estimacio-puntual.html"><a href="estimacio-puntual.html#marca-recaptura"><i class="fa fa-check"></i><b>2.7.2</b> Marca-recaptura</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html"><i class="fa fa-check"></i><b>3</b> Intervals de confiança</a><ul>
+<li class="chapter" data-level="3.1" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#definicions-basiques-1"><i class="fa fa-check"></i><b>3.1</b> Definicions bàsiques</a></li>
+<li class="chapter" data-level="3.2" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#exemple-interval-de-confianca-del-95-per-a-la-mitjana-duna-variable-aleatoria-normal"><i class="fa fa-check"></i><b>3.2</b> Exemple: Interval de confiança del 95% per a la mitjana d’una variable aleatòria normal</a></li>
+<li class="chapter" data-level="3.3" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#interval-de-confianca-per-a-la-mitjana-basat-en-la-t-de-student"><i class="fa fa-check"></i><b>3.3</b> Interval de confiança per a la mitjana basat en la t de Student</a><ul>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#la-formula"><i class="fa fa-check"></i>La fórmula</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#algunes-consideracions"><i class="fa fa-check"></i>Algunes consideracions</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#amb-r-1"><i class="fa fa-check"></i>Amb R</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#calcul-de-la-mida-de-la-mostra-per-fixar-lerror"><i class="fa fa-check"></i>Càlcul de la mida de la mostra per fixar l’error</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#intervals-de-confianca-per-a-proporcions"><i class="fa fa-check"></i><b>3.4</b> Intervals de confiança per a proporcions</a><ul>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#metode-exacte-de-clopper-pearson"><i class="fa fa-check"></i>Mètode “exacte” de Clopper-Pearson</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#metode-de-wilson"><i class="fa fa-check"></i>Mètode de Wilson</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#metode-de-laplace"><i class="fa fa-check"></i>Mètode de Laplace</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#mes-exemples"><i class="fa fa-check"></i>Més exemples</a></li>
+<li class="chapter" data-level="" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#calcul-de-la-mida-de-la-mostra-per-a-fixar-lerror"><i class="fa fa-check"></i>Càlcul de la mida de la mostra per a fixar l’error</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#intervals-de-confianca-per-a-la-variancia-duna-variable-normal"><i class="fa fa-check"></i><b>3.5</b> Intervals de confiança per a la variància d’una variable normal</a></li>
+<li class="chapter" data-level="3.6" data-path="intervals-de-confianca.html"><a href="intervals-de-confianca.html#poblacions-finites"><i class="fa fa-check"></i><b>3.6</b> “Poblacions finites”</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/cescrossello/Mates-II" target="blank">Publicat amb  bookdown</a></li>
@@ -1047,8 +1066,8 @@ Quina de les dues estimacions s’acosta més a la realitat? Ni idea, no ho pode
           </div>
         </div>
       </div>
-<a href="repas-de-la-distribucio-normal.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="repas-de-la-distribucio-normal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intervals-de-confianca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
