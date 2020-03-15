@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tema 1 ANOVA | Matemàtiques II</title>
+  <meta name="description" content="Apunts Matemàtiques II bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Tema 1 ANOVA | Matemàtiques II" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Apunts Matemàtiques II bookdown::gitbook." />
+  <meta name="github-repo" content="cescrossello/MatesII" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tema 1 ANOVA | Matemàtiques II" />
+  
+  <meta name="twitter:description" content="Apunts Matemàtiques II bookdown::gitbook." />
+  
+
+
+
+<meta name="date" content="2020-03-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bioestadística II</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentació</a></li>
+<li class="chapter" data-level="1" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>1</b> ANOVA</a><ul>
+<li class="chapter" data-level="1.1" data-path="anova.html"><a href="anova.html#nocions-basiques"><i class="fa fa-check"></i><b>1.1</b> Nocions bàsiques</a></li>
+<li class="chapter" data-level="1.2" data-path="anova.html"><a href="anova.html#anova-d1-via"><i class="fa fa-check"></i><b>1.2</b> ANOVA d’1 via</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="anova.html"><a href="anova.html#contrast-basic"><i class="fa fa-check"></i><b>1.2.1</b> Contrast bàsic</a></li>
+<li class="chapter" data-level="1.2.2" data-path="anova.html"><a href="anova.html#amb-r"><i class="fa fa-check"></i><b>1.2.2</b> Amb R</a></li>
+<li class="chapter" data-level="1.2.3" data-path="anova.html"><a href="anova.html#comparacions-posteriors-per-parelles"><i class="fa fa-check"></i><b>1.2.3</b> Comparacions posteriors per parelles</a></li>
+<li class="chapter" data-level="1.2.4" data-path="anova.html"><a href="anova.html#verificacio-de-les-condicions"><i class="fa fa-check"></i><b>1.2.4</b> Verificació de les condicions</a></li>
+<li class="chapter" data-level="1.2.5" data-path="anova.html"><a href="anova.html#test-no-parametric"><i class="fa fa-check"></i><b>1.2.5</b> Test no paramètric</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Matemàtiques II</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">Tema 1</span> ANOVA</h1>
+<div id="nocions-basiques" class="section level2">
+<h2><span class="header-section-number">1.1</span> Nocions bàsiques</h2>
+<p>Comencem considerant un problema concret.</p>
+
+<div class="example">
+<p><span id="exm:CO2" class="example"><strong>Exemple 1.1  </strong></span>Es realitzà un estudi per investigar l’efecte del CO<sub>2</sub> sobre la taxa de creixement de <em>Pseudomonas fragi</em>, un corruptor d’aliments.
+Per contrastar si el seu creixement es veu afectat per la quantitat de CO<sub>2</sub> en l’aire, s’administrà CO<sub>2</sub> a 5 pressions atmosfèriques diferents a 10 cultius diferents per cada nivell de pressió de CO<sub>2</sub> i s’anotà el percentatge d’increment de la massa cel·lular de cada cultiu al cap d’una hora.</p>
+</div>
+
+<p>Les dades obtingudes varen ser:
+<span class="math display">\[
+\begin{array}{c}
+\text{Pressió de CO${}_2$ (en atmosferes)}\\
+\begin{array}{rrrrr}
+ 0.0 &amp; 0.08 &amp; 0.29 &amp; 0.50 &amp; 0.86 \\\hline
+ 62.6 &amp; 50.9 &amp; 45.5 &amp; 29.5 &amp; 24.9 \\
+ 59.6 &amp; 44.3 &amp; 41.1 &amp; 22.8 &amp; 17.2 \\
+ 64.5 &amp; 47.5 &amp; 29.8 &amp; 19.2 &amp; 7.8 \\
+ 59.3 &amp; 49.5 &amp; 38.3 &amp; 20.6 &amp; 10.5 \\
+ 58.6 &amp; 48.5 &amp; 40.2 &amp; 29.2 &amp; 17.8 \\
+ 64.6 &amp; 50.4 &amp; 38.5 &amp; 24.1 &amp; 22.1 \\
+ 50.9 &amp; 35.2 &amp; 30.2 &amp; 22.6 &amp; 22.6 \\
+ 56.2 &amp; 49.9 &amp; 27.0 &amp; 32.7 &amp; 16.8 \\
+ 52.3 &amp; 42.6 &amp; 40.0 &amp; 24.4 &amp; 15.9 \\
+ 62.8 &amp; 41.6 &amp; 33.9 &amp; 29.6 &amp; 8.8 
+\end{array}
+\end{array}
+\]</span></p>
+<p>El contrast que es volia realitzar era:</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: El percentatge mitjà d’increment del volum cel·lular d’un cultiu de <em>P. fragi</em> al cap d’una hora és el mateix per a totes les pressions de CO<sub>2</sub> considerades.</p></li>
+<li><p><span class="math inline">\(H_1\)</span>: No és veritat que el percentatge mitjà d’increment del volum cel·lular d’un cultiu de <em>P. fragi</em> al cap d’una hora sigui el mateix per a totes les pressions de CO<sub>2</sub> considerades; és a dir</p>
+<p>Hi ha almenys dues pressions de CO<sub>2</sub> sota les quals els percentatges mitjans d’increment del volum cel·lular d’un cultiu de <em>P. fragi</em> al cap d’una hora són diferents</p></li>
+</ul>
+
+<div class="rmdimportant">
+La hipòtesi alternativa en un contrast d’hipòtesis és el contrari de la nul·la. Si la hipòtesi nul·la és “totes les mitjanes són iguals”, el contrari no és “totes les mitjanes són diferents”, sinó <strong>hi ha almenys dues mitjanes que són diferents</strong>.
+</div>
+
+<p>Aquest experiment és un cas particulat del problema següent:</p>
+<blockquote>
+<p>Tenim <span class="math inline">\(k&gt;2\)</span> poblacions. Volem decidir si la mitjana d’una certa variable aleatòria és la mateixa a totes aquestes poblacions, o no.</p>
+</blockquote>
+
+<div class="rmdcaution">
+<p>Usualment, aquestes <span class="math inline">\(k\)</span> poblacions seran subpoblacions d’una única població, definides per nivells d’un o diversos factors. Per exemple, a l’estudi del creixement del <em>P. fragi</em>, les poblacions són totes cultius d’aquest bacteri, diferenciades per la pressió de CO<sub>2</sub>.</p>
+<p>En el context d’aquest tipus d’estudis, a aquests nivells els anomenen tradicionalment <strong>tractaments</strong>. És a dir, tornant a l’exemple anterior, els nivells de pressió de CO<sub>2</sub> serien els tractaments.</p>
+Per simplificar el llenguatge, sovint cometrem l’abús d’identificar una subpoblació d’aquestes amb el nivell, o tractament, que la defineix.
+</div>
+
+<p>Si diem <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> a les mitjanes d’aquesta variable en aquestes <span class="math inline">\(k\)</span> poblacions, aquesta pregunta correspon al contrast:
+<span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0 : \mu_1 =\mu_2 =\cdots =\mu_k \\
+H_1 : \text{Hi ha  }i,j\text{ tals que }  \mu_i \neq\mu_j
+\end{array}
+\right.
+\]</span></p>
+<p>Aleshores, prendrem una mostra aleatòria de cada població (una mostra <strong>estratificada</strong> de la població total, recordau?), i a partir d’aquestes mostres decidirem aquest contrast.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-12" class="example"><strong>Exemple 1.2  </strong></span>Continuem amb el nostre Exemple <a href="anova.html#exm:CO2">1.1</a>. Per a cada <span class="math inline">\(\ell=0,0.08,0.29,0.50,0.86\)</span>, consideram la variable aleatòria</p>
+</div>
+
+<ul>
+<li><span class="math inline">\(X_\ell\)</span>: “Percentatge de creixement del volum cel·lular en una hora d’un cultiu de <em>P. fragi</em> a <span class="math inline">\(\ell\)</span> atmòsferes de CO<sub>2</sub>”, de mitjana <span class="math inline">\(\mu_\ell\)</span></li>
+</ul>
+<p>Volem realitzar el contrast
+<span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0 : \mu_0=\mu_{0.08}=\mu_{0.29}=\mu_{0.50}=\mu_{0.86} \\
+H_1 : \text{No totes aquestes mitjanes són iguals}
+\end{array}
+\right.
+\]</span></p>
+<p>En temes anteriors, per comparar les mitjanes d’una variable sobre dues poblacions, calculàvem les mitjanes de dues mostres i les comparàvem. Per comparar les mitjanes de <span class="math inline">\(k\geqslant 3\)</span> poblacions, podríem fer-ho per parelles, però hauríem de fer <span class="math inline">\(\binom{k}{2}\)</span> contrastos i això augmenta la probabilitat d’error. A més, les hem de comparar totes amb totes, perquè podria passar que o poguem rebutjar que <span class="math inline">\(\mu_1= \mu_2\)</span> ni que <span class="math inline">\(\mu_2= \mu_3\)</span> però en canvi sí que poguem rebutjar que <span class="math inline">\(\mu_1= \mu_3\)</span>.</p>
+<p>El que volem és un test que ens digui en un sol pas si totes les mitjanes són iguals o no; si resulta que no, després ja cercarem les diferents si volem.</p>
+<p>La tècnica més usual per efectuar aquest tipus de contrast és l’<strong>Anàlisi de la Variància</strong> o <strong>ANOVA</strong> (de l’anglès <em>ANalysis Of VAriance</em>; en llibres en castellà o català de vegades hi trobareu el terme <em>ANDEVA</em>, de <em>ANàlisi DE la VAriància</em>, però no el farem servir, perquè trobam que sona més a marca de producte d’higiene íntima femenina que a tècnica estadística seriosa). L’ANOVA és tot un món, i té moltes variants segons el disseny experimental que hagi produït les dades:</p>
+<ul>
+<li><p>Segons quants factors emprem per separar la població en subpoblacions</p></li>
+<li><p>Segons com triem els nivells dels factors</p></li>
+<li><p>Segons com prenguem les mostres</p></li>
+</ul>
+<p>En aquest curs veurem els tres dissenys més bàsics:</p>
+<ul>
+<li><p>L’ANOVA d’1 via, que generalitza el test t de dues mitjanes a partir de dues mostres independents a <span class="math inline">\(k\)</span> mitjanes, de poblacions definides pels nivells d’un únic factor, a partir de <span class="math inline">\(k\)</span> mostres independents</p></li>
+<li><p>L’ANOVA de blocs, que generalitza el test t de dues mitjanes a partir de dues mostres aparellades a <span class="math inline">\(k\)</span> mitjanes, de poblacions definides pels nivells d’un únic factor, a partir de <span class="math inline">\(k\)</span> mostres aparellades</p></li>
+<li><p>L’ANOVA de 2 vies, que generalitza l’ANOVA de 1 via a mitjanes de poblacions definides pels nivells de dos factors</p></li>
+</ul>
+
+<div class="rmdnote">
+Recordau que en català “Anàlisi” és femení, mentre que en castellà “Análisis” és masculí. Per tant en català diem “una ANOVA” i en castella “un ANOVA”. Expressau-vos bé, per favor.
+</div>
+
+
+<div class="rmdromans">
+<strong>ANO…VA?</strong> No volem comparar mitjanes? Idò com és que analitzam variàncies?
+</div>
+
+<p>L’estratègia per comparar les mitjanes de 3 o més poblacions serà fixar-nos en tres fonts de variabilitat de les dades:</p>
+<ul>
+<li><p><em>Variabilitat total de les dades</em> (respecte de la mitjana mostral global)</p></li>
+<li><p><em>Variabilitat dins cada mostra</em> (respecte de la mitjana mostral corresponent)</p></li>
+<li><p><em>Variabilitat de les mitjanes mostrals</em> (respecte de la mitjana mostral global)</p></li>
+</ul>
+<p>La idea és que si les mitjanes mostrals tenen molta variabilitat, ho prendrem com a senyal que les mitjanes poblacionals no poden ser totes iguals. Com ho mesurarem?</p>
+<p>Amb definicions adients de les “variabilitats”, resultarà que</p>
+<blockquote>
+<p>La <em>Variabilitat total de les dades</em> és igual a la suma de la <em>Variabilitat de les mitjanes mostrals</em> més la <em>Suma de les variabilitats dins les mostres</em>.</p>
+</blockquote>
+<p>Aleshores, la idea bàsica anterior es tradueix en:</p>
+
+<div class="rmdrecordau">
+Si la variabilitat total de les dades és molt més gran que la suma de les variabilitats dins les mostres, hi haurà una gran variabilitat de les mitjanes mostrals, i ho prendrem com a senyal que les mitjanes poblacionals no són iguals.
+</div>
+
+<p>Per exemple, si teniu molta variabilitat global:</p>
+<p><img src="Bioestadistica-II_files/figure-html/FD11.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>i molt poca dins cada nivell</p>
+<p><img src="Bioestadistica-II_files/figure-html/FD12.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>serà evidència que les mitjanes poblacionals són diferents</p>
+<p>Si en canvi teniu molta variabilitat global</p>
+<p><img src="Bioestadistica-II_files/figure-html/FD21.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>però també molta dins cada nivell:</p>
+<p><img src="Bioestadistica-II_files/figure-html/FD22.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>no podrem conlcoure que les mitjanes poblacionals siguin diferents.</p>
+<p>La pregunta és ara com quantificam aquestes variabilitats i com definim què significarà “molt més gran”.</p>
+</div>
+<div id="anova-d1-via" class="section level2">
+<h2><span class="header-section-number">1.2</span> ANOVA d’1 via</h2>
+<div id="contrast-basic" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Contrast bàsic</h3>
+<p>En un <strong>experiment de disseny d’ANOVA d’1 via</strong> (en anglès, <em>1 way</em>):</p>
+<ul>
+<li><p>Empram un únic factor per classificar la població en subpoblacions (una única “manera” de classificar, en anglès <em>one way</em> que també es tradueix per “una via”, i així ha quedat el nom en les nostres llengües)</p></li>
+<li><p>Es pren una m.a.s. de cada subpoblació, de manera independent les unes de les altres</p></li>
+</ul>
+<p>Per exemple, l’experiment del nostre Exemple <a href="anova.html#exm:CO2">1.1</a> té disseny d’ANOVA d’1 via:</p>
+<ul>
+<li><p>S’hi empra un sol factor per classificar la població: la pressió de CO<sub>2</sub> sota la qual es realitzen els cultius</p></li>
+<li><p>S’hi ha pres una m.a.s. per a cada nivell de pressió, i de manera independent les unes de les altres</p></li>
+</ul>
+<p>Ja que hi som, anam a organitzar les dades d’aquest experiment de manera adient. Les emmagatzemarem en un <em>dataframe</em> que anomenarem <code>CO2</code> amb dues variables:</p>
+<ul>
+<li><strong>Inc</strong>: Percentatge d’increment de la massa cel·lular (al cap d’una hora); una variable numèrica</li>
+<li><strong>Pre</strong>: Nivell de pressió, com a <strong>factor</strong></li>
+</ul>
+
+<div class="rmdimportant">
+De cara a fer-ho amb R, és important que recordeu que la variable que defineix les subpoblaciones, en aquest cas la que dóna el nivell de pressió de CO<sub>2</sub>, sigui un factor.
+</div>
+
+<p>Les dades eren:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\text{Pressió de CO${}_2$ (en atmosferes)}\\
+\begin{array}{rrrrr}
+ 0.0 &amp; 0.08 &amp; 0.29 &amp; 0.50 &amp; 0.86 \\\hline
+ 62.6 &amp; 50.9 &amp; 45.5 &amp; 29.5 &amp; 24.9 \\
+ 59.6 &amp; 44.3 &amp; 41.1 &amp; 22.8 &amp; 17.2 \\
+ 64.5 &amp; 47.5 &amp; 29.8 &amp; 19.2 &amp; 7.8 \\
+ 59.3 &amp; 49.5 &amp; 38.3 &amp; 20.6 &amp; 10.5 \\
+ 58.6 &amp; 48.5 &amp; 40.2 &amp; 29.2 &amp; 17.8 \\
+ 64.6 &amp; 50.4 &amp; 38.5 &amp; 24.1 &amp; 22.1 \\
+ 50.9 &amp; 35.2 &amp; 30.2 &amp; 22.6 &amp; 22.6 \\
+ 56.2 &amp; 49.9 &amp; 27.0 &amp; 32.7 &amp; 16.8 \\
+ 52.3 &amp; 42.6 &amp; 40.0 &amp; 24.4 &amp; 15.9 \\
+ 62.8 &amp; 41.6 &amp; 33.9 &amp; 29.6 &amp; 8.8 
+\end{array}
+\end{array}
+\]</span></p>
+<p>Entrarem els increments per fileres (és més fàcil de copiar i aferrar), per tant el factor <strong>Pre</strong> ha d’estar format per 10 còpies consecutives del vector (0.0,0.08,0.29,0.50,0.86).</p>
+<pre class="sourceCode r"><code class="sourceCode r">Inc=<span class="kw">c</span>(<span class="fl">62.6</span>,<span class="fl">50.9</span>,<span class="fl">45.5</span>,<span class="fl">29.5</span>,<span class="fl">24.9</span>,<span class="fl">59.6</span>,<span class="fl">44.3</span>,<span class="fl">41.1</span>,<span class="fl">22.8</span>,<span class="fl">17.2</span>,<span class="fl">64.5</span>,
+      <span class="fl">47.5</span>,<span class="fl">29.8</span>,<span class="fl">19.2</span>,<span class="fl">7.8</span>,<span class="fl">59.3</span>,<span class="fl">49.5</span>,<span class="fl">38.3</span>,<span class="fl">20.6</span>,<span class="fl">10.5</span>,<span class="fl">58.6</span>,<span class="fl">48.5</span>,
+      <span class="fl">40.2</span>,<span class="fl">29.2</span>,<span class="fl">17.8</span>,<span class="fl">64.6</span>,<span class="fl">50.4</span>,<span class="fl">38.5</span>,<span class="fl">24.1</span>,<span class="fl">22.1</span>,<span class="fl">50.9</span>,<span class="fl">35.2</span>,<span class="fl">30.2</span>,
+      <span class="fl">22.6</span>,<span class="fl">22.6</span>,<span class="fl">56.2</span>,<span class="fl">49.9</span>,<span class="fl">27.0</span>,<span class="fl">32.7</span>,<span class="fl">16.8</span>,<span class="fl">52.3</span>,<span class="fl">42.6</span>,<span class="fl">40.0</span>,<span class="fl">24.4</span>,
+      <span class="fl">15.9</span>,<span class="fl">62.8</span>,<span class="fl">41.6</span>,<span class="fl">33.9</span>,<span class="fl">29.6</span>,<span class="fl">8.8</span>)
+Pre=<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;0.0&quot;</span>,<span class="st">&quot;0.08&quot;</span>,<span class="st">&quot;0.29&quot;</span>,<span class="st">&quot;0.50&quot;</span>,<span class="st">&quot;0.86&quot;</span>), <span class="dt">times=</span><span class="dv">10</span>))
+CO2=<span class="kw">data.frame</span>(Inc,Pre)
+<span class="kw">str</span>(CO2)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  2 variables:
+##  $ Inc: num  62.6 50.9 45.5 29.5 24.9 59.6 44.3 41.1 22.8 17.2 ...
+##  $ Pre: Factor w/ 5 levels &quot;0.0&quot;,&quot;0.08&quot;,&quot;0.29&quot;,..: 1 2 3 4 5 1 2 3 4 5 ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(CO2,<span class="dv">7</span>)</code></pre>
+<pre><code>##    Inc  Pre
+## 1 62.6  0.0
+## 2 50.9 0.08
+## 3 45.5 0.29
+## 4 29.5 0.50
+## 5 24.9 0.86
+## 6 59.6  0.0
+## 7 44.3 0.08</code></pre>
+<p>Veiem que hem definit del <em>dataframe</em> com toca. Donem ara una ullada a les dades. Primer un diagrama de punts de cada nivell de CO<sub>2</sub> (amb només 10 valors per nivell, és més adient dibuixar-los tots que resumir-los en diagrames de caixes):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stripchart</span>(Inc<span class="op">~</span>Pre,<span class="dt">data=</span>CO2,<span class="dt">xlab=</span><span class="st">&quot;Pressions&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Increment&quot;</span>,<span class="dt">method=</span><span class="st">&quot;stack&quot;</span>,
+           <span class="dt">vertical=</span><span class="ot">TRUE</span>,<span class="dt">pch=</span><span class="dv">20</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)</code></pre>
+<p><img src="Bioestadistica-II_files/figure-html/unnamed-chunk-22-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>I ara un que mostri la variabilitat de les dades i les mitjanes com els del final de la secció anterior.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Els paràmetres generals</span>
+<span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,<span class="kw">c</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.0&quot;</span>],CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.08&quot;</span>],CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.29&quot;</span>],CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.50&quot;</span>],CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.86&quot;</span>]),<span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Número del cultiu&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Increment&quot;</span>)
+<span class="co"># Els punts</span>
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.0&quot;</span>],<span class="dt">pch=</span><span class="dv">16</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">points</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">20</span>,CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.08&quot;</span>],<span class="dt">pch=</span><span class="dv">15</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">points</span>(<span class="dv">21</span><span class="op">:</span><span class="dv">30</span>,CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.29&quot;</span>],<span class="dt">pch=</span><span class="dv">17</span>,<span class="dt">col=</span><span class="st">&quot;green&quot;</span>)
+<span class="kw">points</span>(<span class="dv">31</span><span class="op">:</span><span class="dv">40</span>,CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.50&quot;</span>],<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">col=</span><span class="st">&quot;brown2&quot;</span>)
+<span class="kw">points</span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>,CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.86&quot;</span>],<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="st">&quot;brown&quot;</span>)
+<span class="co"># La mitjana mostral global</span>
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc)),<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">text</span>(<span class="dv">5</span>,<span class="dv">34</span>,<span class="st">&quot;Mitjana global&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)
+<span class="co"># Les mitjanes mostrals de les mostres</span>
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.0&quot;</span>]),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.0&quot;</span>])),<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.08&quot;</span>]),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.08&quot;</span>])),<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">30</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.29&quot;</span>]),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.29&quot;</span>])),<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;green&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">40</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.50&quot;</span>]),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.50&quot;</span>])),<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;brown2&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">40</span>,<span class="dv">50</span>),<span class="kw">c</span>(<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.86&quot;</span>]),<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.86&quot;</span>])),<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;brown&quot;</span>)
+<span class="kw">text</span>(<span class="dv">20</span>,<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.0&quot;</span>]),<span class="st">&quot;Mitjana del nivell 0.0&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)
+<span class="kw">text</span>(<span class="dv">30</span>,<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.08&quot;</span>]),<span class="st">&quot;Mitjana del nivell 0.083&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)
+<span class="kw">text</span>(<span class="dv">40</span>,<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.29&quot;</span>]<span class="op">+</span><span class="dv">2</span>),<span class="st">&quot;Mitjana del nivell 0.29&quot;</span>,<span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)
+<span class="kw">text</span>(<span class="dv">20</span>,<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.50&quot;</span>]),<span class="st">&quot;Mitjana del nivell 0.50&quot;</span>,<span class="dt">col=</span><span class="st">&quot;brown2&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)
+<span class="kw">text</span>(<span class="dv">30</span>,<span class="kw">mean</span>(CO2<span class="op">$</span>Inc[CO2<span class="op">$</span>Pre<span class="op">==</span><span class="st">&quot;0.86&quot;</span>]),<span class="st">&quot;Mitjana del nivell 0.86&quot;</span>,<span class="dt">col=</span><span class="st">&quot;brown&quot;</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)</code></pre>
+<p><img src="Bioestadistica-II_files/figure-html/unnamed-chunk-23-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Veiem que hi ha una gran dispersió dins la mostra completa, no massa dispersió dins cada mostra per nivell, i les mitjanes mostrals per nivells són bastant diferents. Naturalment, fins que no fem una anàlisi estadística no sabrem si aquestes variabilitats i diferències són estadísticament significatives o no.</p>
+<p>En un experiment amb disseny d’ANOVA d’1 via, disposarem les dades en una taula com la de l’Exemple anterior, amb les columnes representant els tractaments:
+<span class="math display">\[
+\begin{array}{c}
+\text{Tractaments}\\
+\begin{array}{cccc}
+ 1 &amp; 2 &amp;\ldots &amp; k \\\hline
+ X_{11} &amp; X_{21} &amp; \cdots &amp; X_{k1} \\
+ X_{12} &amp; X_{22} &amp; \cdots &amp; X_{k2} \\
+ \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; X_{kn_k} \\
+X_{1n_1}  &amp; \vdots &amp; \vdots &amp;  \\
+ &amp; X_{2n_2} &amp;  &amp;  \\\hline
+\end{array}
+\end{array}
+\]</span></p>
+<p>on</p>
+<ul>
+<li><p>Cada <span class="math inline">\(n_i\)</span> és la mida de la mostra del nivell <span class="math inline">\(i\)</span>; com hem intentat representar a la taula, aquests <span class="math inline">\(n_i\)</span> <strong>no tenen perquè ser tots iguals</strong> (però millor si ho són, perquè la potència d’un contrast ANOVA depèn del mínim d’aquests <span class="math inline">\(n_i\)</span>)</p></li>
+<li><p><span class="math inline">\(X_{ij}\)</span> és el valor de la variable sota estudi al subjecte <span class="math inline">\(j\)</span> del nivell <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\(N=n_1+\cdots+n_k\)</span> és la mida total de la mostra</p></li>
+</ul>
+
+<div class="rmdcaution">
+<p><strong>ALERTA!</strong> Les notacions són diferents que les usuals a les matrius o a les taules de dades. A <span class="math inline">\(X_{ij}\)</span>, <span class="math inline">\(i\)</span> hi indica la columna i <span class="math inline">\(j\)</span> la filera.</p>
+Fixau-vos que aquí no és veritat que cada filera representi un individu: en realitat cada columna pot tenir una alçada diferent. En aquesta taula cada <span class="math inline">\(X_{ij}\)</span> representa un individu diferent.
+</div>
+
+<p>Perquè es pugui realitzar un contrast ANOVA d’1 via, <strong>s’han de satisfer les condicions següents</strong>:</p>
+<ul>
+<li><p>Les <span class="math inline">\(k\)</span> mostres han de ser m.a.s. independents extretes de <span class="math inline">\(k\)</span> poblacions específiques, amb mitjanes <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span></p></li>
+<li><p><span class="math inline">\(N\geqslant k+1\)</span></p></li>
+<li><p>Cadascuna de les <span class="math inline">\(k\)</span> poblacions ha de seguir una llei normal</p></li>
+<li><p><strong>Homocedasticitat</strong>: Totes aquestes poblacions han de tenir la mateixa variància, que indicarem amb <span class="math inline">\(\sigma^2\)</span></p></li>
+</ul>
+
+<div class="rmdrecordau">
+<strong>No basten mostres grans</strong>. Aquí no juga cap paper el Teorema Central del Límit. Però, per sort, les conclusions d’una ANOVA són bastant robustes encara que falli la condició de normalitat de les subpoblacions. En canvi són molt sensibles a l’<strong>heterocedasticitat</strong> (el contrari d’homocedasticitat; “hetero” indica el contrari de “homo”).
+</div>
+
+<p>Donades diverses variables, hi tenim <strong>homocedasticitat</strong> quan totes tenen la mateixa variància, i <strong>heterocedasticitat</strong> quan no totes tenen la mateixa variància. Per exemple, les tres mostres del gràfic de l’esquerra següent provenen de variables normals amb la mateixa variància, representades al gràfic de la dreta: hi ha homocedasticitat:
+<img src="Bioestadistica-II_files/figure-html/unnamed-chunk-26-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>En canvi, al gràfic següent dues mostres provenen de variables normals amb la mateixa variància, però la tercera prové d’una normalamb una variància molt més gran: hi ha heterocedasticitat:</p>
+<p><img src="Bioestadistica-II_files/figure-html/unnamed-chunk-27-1.png" width="90%" style="display: block; margin: auto;" /></p>
+
+<div class="rmdimportant">
+L’homocedasticitat <strong>no és que les mostres tenguin la mateixa variància</strong>, sinó que <strong>les subpoblacions tenguin la mateixa variància</strong>.
+</div>
+
+<p>Diguem <span class="math inline">\(\mu\)</span> a la mitjana poblacional de la població global (sense tenir en compte els nivells).
+Recordau que la hipòtesi nul·la del contrast és
+<span class="math display">\[
+H_0: \mu_1=\cdots=\mu_k
+\]</span>
+Si és vertadera, aleshores en realitat passarà que
+<span class="math display">\[
+\mu_1=\cdots=\mu_k=\mu
+\]</span>
+perquè si totes les subpoblacions tenen la mateixa mitjana, aquesta mitjana comuna serà la mitjana de tota la població.</p>
+<p>Passem ara a la mostra amb la que volem realitzar el contrast. Siguin:</p>
+<ul>
+<li><p><span class="math inline">\(\overline{X}_{i}\)</span>: Mitjana mostral de la mostra del nivell <span class="math inline">\(i\)</span>-èsim:
+<span class="math display">\[
+\overline{X}_{i} =
+\frac{\sum_{j=1}^{n_i} X_{ij}}{n_i}
+\]</span>
+Estima la mitjana <span class="math inline">\(\mu_i\)</span> de la subpoblació definida pel nivell <span class="math inline">\(i\)</span>-èsim</p></li>
+<li><p><span class="math inline">\(\overline{X}\)</span>: Mitjana mostral de tota la mostra:
+<span class="math display">\[
+\overline{X}=\frac{\sum_{i=1}^k \sum_{j=1}^{n_i} X_{ij}}{N}
+\]</span>
+Estima la mitjana <span class="math inline">\(\mu\)</span> de la població global</p></li>
+</ul>
+Es té la identitat següent:
+
+<div class="theorem">
+<p><span id="thm:SS1via" class="theorem"><strong>Teorema 1.1  (Identitat de les sumes de quadrats)  </strong></span><span class="math display">\[
+SS_{Total}=SS_{Tr}+SS_E
+\]</span>
+on</p>
+<ul>
+<li><p><span class="math inline">\(SS_{Total}=\displaystyle\sum_{i=1}^k\sum_{j=1}^{n_i} (X_{ij}-\overline{X})^2\)</span>; és la <strong>Suma Total de Quadrats</strong></p></li>
+<li><p><span class="math inline">\(SS_{Tr}=\displaystyle\sum_{i=1}^k n_i(\overline{X}_{i}-\overline{X})^2\)</span>; és la <strong>Suma de Quadrats dels Tractaments</strong></p></li>
+<li><span class="math inline">\(SS_E=\displaystyle\sum_{i=1}^k\sum_{j=1}^{n_i} (X_{ij}-\overline{X}_{i})^2\)</span>; és la <strong>Suma de Quadrats dels Residus</strong> o <strong>dels Errors</strong></li>
+</ul>
+</div>
+
+<p>Fixau-vos que</p>
+<ul>
+<li><p><span class="math inline">\(SS_{Total}\)</span> representa la variabilitat total de les dades: de fet, és el numerador de la variància de la mostra total</p></li>
+<li><p><span class="math inline">\(SS_{Tr}\)</span> representa la variabilitat de les mitjanes: és molt semblant al que seria el numerador de la variància d’un vector format per <span class="math inline">\(n_1\)</span> còpies de <span class="math inline">\(\overline{X}_1\)</span>, <span class="math inline">\(n_2\)</span> còpies de <span class="math inline">\(\overline{X}_2\)</span>, …, <span class="math inline">\(n_k\)</span> còpies de <span class="math inline">\(\overline{X}_k\)</span> (i seria aquest numerador si <span class="math inline">\(n_1=\cdots=n_k\)</span>)</p></li>
+<li><p><span class="math inline">\(SS_E\)</span> representa la suma de les variabilitats de les dades de la mostra de cada nivell: de fet, és la suma dels numeradors de les variàncies de les <span class="math inline">\(k\)</span> mostres dels diferents nivells</p></li>
+<li><p><span class="math inline">\(SS_{Total}=SS_{Tr}+SS_E\)</span> diu que la variabilitat total de la mostra descompon en la suma de la suma de les variabilitats de les mosres de cada nivell més la variabilitat de les mitjanes</p></li>
+</ul>
+
+<div class="example">
+<span id="exm:unnamed-chunk-29" class="example"><strong>Exemple 1.3  </strong></span>Tornem al nostre Exemple <a href="anova.html#exm:CO2">1.1</a>. Tenim les dades guardades en el <em>dataframe</em> <code>CO2</code>
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(CO2)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  2 variables:
+##  $ Inc: num  62.6 50.9 45.5 29.5 24.9 59.6 44.3 41.1 22.8 17.2 ...
+##  $ Pre: Factor w/ 5 levels &quot;0.0&quot;,&quot;0.08&quot;,&quot;0.29&quot;,..: 1 2 3 4 5 1 2 3 4 5 ...</code></pre>
+<p>Aleshores:</p>
+<ul>
+<li>Les mitjanes mostrals per nivells, <span class="math inline">\(\overline{X}_{i}\)</span>, són</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">mitjanes.nivells=<span class="kw">aggregate</span>(Inc<span class="op">~</span>Pre,<span class="dt">data=</span>CO2,mean)
+mitjanes.nivells</code></pre>
+<pre><code>##    Pre   Inc
+## 1  0.0 59.14
+## 2 0.08 46.04
+## 3 0.29 36.45
+## 4 0.50 25.47
+## 5 0.86 16.44</code></pre>
+<ul>
+<li>La mitjana mostral global, <span class="math inline">\(\overline{X}\)</span>, és:</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">mitjana.total=<span class="kw">mean</span>(CO2<span class="op">$</span>Inc)
+mitjana.total</code></pre>
+<pre><code>## [1] 36.708</code></pre>
+<ul>
+<li>La <span class="math inline">\(SS_{Total}=\displaystyle\sum_{i=1}^k\sum_{j=1}^{n_i} (X_{ij}-\overline{X})^2\)</span> és</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">SSTotal=<span class="kw">sum</span>((CO2<span class="op">$</span>Inc<span class="op">-</span>mitjana.total)<span class="op">^</span><span class="dv">2</span>)
+SSTotal</code></pre>
+<pre><code>## [1] 12522.36</code></pre>
+<ul>
+<li>Per calcular
+<span class="math display">\[
+SS_{Tr}=\displaystyle\sum_{i=1}^k n_i(\overline{X}_{i}-\overline{X})^2
+\]</span>
+hem d’observar que les mitjanes <span class="math inline">\(\overline{X}_{i}\)</span> són la segona columna del <em>dataframe</em> <code>mitjanes.nivells</code></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">SSTr=<span class="kw">sum</span>(<span class="kw">table</span>(CO2<span class="op">$</span>Pre)<span class="op">*</span>(mitjanes.nivells[,<span class="dv">2</span>]<span class="op">-</span>mitjana.total)<span class="op">^</span><span class="dv">2</span>)
+SSTr</code></pre>
+<pre><code>## [1] 11274.32</code></pre>
+<ul>
+<li>Per calcular
+<span class="math display">\[
+SS_E=\displaystyle\sum_{i=1}^k\sum_{j=1}^{n_i} (X_{ij}-\overline{X}_{i})^2
+\]</span>
+podem fixar-nos que, tal i com hem construït el <em>dataframe</em> <strong>CO2</strong>, les entrades de <code>CO2$Inc</code> que difereixen en un múltiple de 5 són del mateix tractament; per exemple, les entrades que corresponen a pressió 0 són la 1a, la 6a, la 11a etc.; les entrades que corresponen a pressió 0.83 són la 2a, la 7a, la 12a etc.; i així successivament. Per tant, si fem <code>CO2$Inc-mitjanes.nivells[,2]</code>, com que la longitud de <code>CO2$Inc</code> és 10 vegades la de <code>mitjanes.nivells[,2]</code>, el que estarem dient és que a <code>CO2$Inc</code> se li resti un vector format per 10 còpies consecutives de <code>mitjanes.nivells[,2]</code>, i justament a cada entrada de <code>CO2$Inc</code> se li restarà d’aquesta manera l’entrada de <code>mitjanes.nivells[,2]</code> que és la mitjana del seu nivell. Per tant, <span class="math inline">\(SS_E\)</span> es pot calcular amb</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">SSE=<span class="kw">sum</span>((CO2<span class="op">$</span>Inc<span class="op">-</span>mitjanes.nivells[,<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>)
+SSE</code></pre>
+<pre><code>## [1] 1248.038</code></pre>
+<p>Comprovem la identitat de les sumes de quadrats:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SSTotal</code></pre>
+<pre><code>## [1] 12522.36</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SSTr<span class="op">+</span>SSE</code></pre>
+<pre><code>## [1] 12522.36</code></pre>
+<p>La idea del contrast ANOVA és que</p>
+<blockquote>
+<p>Rebutjam la hipòtesi nul·la si <span class="math inline">\(SS_{Tr}\)</span> és prou gran</p>
+</blockquote>
+<p>Per la identitat de les sumes de quadrats
+<span class="math display">\[
+SS_{Total}=SS_{Tr}+SS_E
+\]</span>
+això ho traduïm en</p>
+<blockquote>
+<p>Rebutjam la hipòtesi nul·la si <span class="math inline">\(SS_{Total}\)</span> és molt més gran que <span class="math inline">\(SS_E\)</span></p>
+</blockquote>
+<p>I això en realitat ho traduïm en</p>
+<blockquote>
+<p>Rebutjam la hipòtesi nul·la si <span class="math inline">\(SS_{Tr}\)</span> és prou més gran que <span class="math inline">\(SS_E\)</span></p>
+</blockquote>
+<p>Per mesurar-ho emprarem els estadístics següents:</p>
+<ul>
+<li><strong>Quadrat mitjà dels tractaments</strong>:
+<span class="math display">\[
+MS_{Tr}=\frac{SS_{Tr}}{k-1}
+\]</span></li>
+<li><strong>Quadrat mitjà residual</strong>:
+<span class="math display">\[
+MS_E=\frac{SS_E}{N-k}
+\]</span></li>
+</ul>
+<p>Aquests estadístics són variables aleatòries, i sota les condicions necessàries per poder fer una ANOVA (mostres aleatòries simples independents, variable poblacional normal per a cada nivell, homocedasticitat), satisfan que</p>
+<ul>
+<li><p><span class="math inline">\(E(MS_{Tr})=\displaystyle\sigma^2 + \sum_{i=1}^k \frac{n_i (\mu_i-\mu)^2}{k-1}\)</span></p></li>
+<li><p><span class="math inline">\(E(MS_E)=\sigma^2\)</span></p></li>
+</ul>
+
+<div class="rmdrecordau">
+En particular, <strong>es pot usar <span class="math inline">\(MS_E\)</span> per estimar la variància comuna <span class="math inline">\(\sigma^2\)</span> de totes les subpoblacions</strong>.
+</div>
+
+<p>Ara, si <span class="math inline">\(H_0:\mu_1=\cdots=\mu_k (=\mu)\)</span> és certa,
+<span class="math display">\[
+\sum_{i=1}^k \frac{n_i (\mu_i -\mu)^2}{k-1}=0,
+\]</span>
+i si <span class="math inline">\(H_0\)</span> no és certa, aquesta quantitat és <span class="math inline">\(&gt;0\)</span></p>
+<p>Per tant</p>
+<ul>
+<li><p>Si <span class="math inline">\(H_0\)</span> és certa, <span class="math inline">\(E(MS_E)=E(MS_{Tr})\)</span> i hauríem d’esperar que aquests dos estadístics tinguessin valors propers, és a dir, hauríem d’esperar que
+<span class="math display">\[
+\frac{MS_{Tr}}{MS_E}\approx 1
+\]</span></p></li>
+<li><p>Si <span class="math inline">\(H_0\)</span> és falsa, <span class="math inline">\(E(MS_E)&lt;E(MS_{Tr})\)</span> i hauríem d’esperar que <span class="math inline">\(MS_{Tr}\)</span> doni valors més grans que <span class="math inline">\(MS_E\)</span>, és a dir, hauríem d’esperar que
+<span class="math display">\[
+\frac{MS_{Tr}}{MS_E}&gt; 1
+\]</span></p></li>
+</ul>
+<p>Aleshores, prenem com a <strong>estadístic de contrast</strong> el quocient
+<span class="math display">\[
+F=\frac{MS_{Tr}}{MS_E}
+\]</span></p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-38" class="theorem"><strong>Teorema 1.2  </strong></span>Sota les condicions necessàries per poder realitzar una ANOVA i si <span class="math inline">\(H_0:\mu_1=\cdots=\mu_k\)</span> és certa,</p>
+<ul>
+<li><p>La distribució de <span class="math inline">\(F\)</span> és una F de Fisher amb <span class="math inline">\(k-1\)</span> i <span class="math inline">\(N-k\)</span> graus de llibertat, <span class="math inline">\(F_{k-1,N-k}\)</span></p></li>
+<li>El seu valor és proper a 1</li>
+</ul>
+</div>
+
+<p>Per tant, en una ANOVA <strong>rebutjarem la hipòtesi nul·la si el valor <span class="math inline">\(F_0\)</span> de <span class="math inline">\(F\)</span> obtingut sobre la nostra mostra és molt gran</strong>. Això ho traduirem en que rebutjarem la hipòtesi nul·la si la probabilitat que <span class="math inline">\(F\)</span> sigui més gran que <span class="math inline">\(F_0\)</span> és petita, i aquesta probabilitat serà el p-valor del contrast.</p>
+
+<div class="rmdnote">
+Si <span class="math inline">\(k=2\)</span>, aquesta <span class="math inline">\(F\)</span> és igual al quadrat de l’estadístic del test t de 2 mostres independents i variàncies iguals. Per tant, efectuar ANOVA d’1 via amb només 2 tractaments és equivalent a efectuar un test t amb mostres independents i mateixa variància poblacional.
+</div>
+
+<p>En resum, per realitzar una ANOVA d’1 via a partir d’una mostra:</p>
+<ul>
+<li><p>Calcularem les sumes de quadrats
+<span class="math display">\[
+SS_{Tr},\ SS_E
+\]</span></p></li>
+<li><p>Calcularem els quadrats mitjans
+<span class="math display">\[
+MS_{Tr}=\frac{SS_{Tr}}{k-1},\
+MS_E=\frac{SS_E}{N-k} 
+\]</span></p></li>
+<li><p>Calcularem l’estadístic de contrast sobre la nostra mostra
+<span class="math display">\[
+F_0=\frac{MS_{Tr}}{MS_E}
+\]</span></p></li>
+<li><p>Calcularem el p-valor
+<span class="math display">\[
+P(F_{k-1,N-k}\geqslant F_0)
+\]</span></p></li>
+<li><p>Si el p-valor és més petit que el nivell de significació <span class="math inline">\(\alpha\)</span>, rebutjarem <span class="math inline">\(H_0\)</span> i conclourem que no totes les mitjanes són iguals. En cas contrari, acceptarem que totes les mitjanes són iguals.</p></li>
+</ul>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-41" class="example"><strong>Exemple 1.4  </strong></span>Continuem amb el nostre Exemple <a href="anova.html#exm:CO2">1.1</a>.</p>
+</div>
+
+<ul>
+<li><p>Ja sabem que <span class="math inline">\(N=50\)</span>, <span class="math inline">\(k=5\)</span>, <span class="math inline">\(SS_{Total}=1.252236\times 10^{4}\)</span>,
+<span class="math inline">\(SS_{Tr}=1.127432\times 10^{4}\)</span> i <span class="math inline">\(SS_E=1248.038\)</span>.</p></li>
+<li><p>Els quadrats mitjans són:</p></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">N=<span class="dv">50</span>
+k=<span class="dv">5</span>
+MSTr=SSTr<span class="op">/</span>(k<span class="dv">-1</span>)
+MSTr</code></pre>
+<pre><code>## [1] 2818.58</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">MSE=SSE<span class="op">/</span>(N<span class="op">-</span>k)
+MSE</code></pre>
+<pre><code>## [1] 27.73418</code></pre>
+<ul>
+<li>L’estadístic de contrast val:</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">F0=MSTr<span class="op">/</span>MSE
+F0</code></pre>
+<pre><code>## [1] 101.6284</code></pre>
+<ul>
+<li>El p-valor <span class="math inline">\(P(F_{k-1,N-k}\geqslant F_0)\)</span> val</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(F0,k<span class="dv">-1</span>,N<span class="op">-</span>k)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p><em>Conclusió</em>: Hem trobat evidència estadísticament significativa que el nivell de pressió de CO<sub>2</sub> influeix en
+el creixement mitjà del microorganisme <em>Pseudomonas fragi</em> (ANOVA, p-valor 0).</p>
+
+<div class="rmdcaution">
+Només concloem que no totes les mitjanes (dels percentatges d’increment de volum cel·lular) són iguals: no que totes aquestes mitjanes són diferents. <strong>No és el mateix!</strong>
+</div>
+
+<p>Un contrast ANOVA se sol resumir en la taula següent:
+<span class="math display">\[
+\begin{array}{llllll}
+\hline
+\text{Origen de la}&amp;\text{Graus de}&amp;\text{Sumes de}&amp;\text{Quadrats} &amp; \text{Estadístic de}&amp;\text{p-valor}\\[-0.5ex]
+\text{variabilitat}&amp;\text{llibertat}&amp;\text{quadrats}&amp;\text{mitjans}&amp;\text{contrast} &amp; \\\hline
+\text{Nivells} &amp; k-1 &amp; SS_{Tr}&amp; MS_{Tr}  &amp; F &amp; \text{p-valor} \\[1ex]
+\text{Residus} &amp; N-k &amp; SS_E &amp; MS_E &amp; \\\hline
+\end{array}
+\]</span>
+En el nostre Exemple <a href="anova.html#exm:CO2">1.1</a>, aquesta taula és
+<span class="math display">\[
+\begin{array}{llllll}
+\hline
+\text{Origen de la}&amp;\text{Graus de}&amp;\text{Sumes de}&amp;\text{Quadrats} &amp; \text{Estadístic de}&amp;\text{p-valor}\\[-0.5ex]
+\text{variabilitat}&amp;\text{llibertat}&amp;\text{quadrats}&amp;\text{mitjans}&amp;\text{contrast} &amp; \\\hline
+\text{Nivells} &amp; 4 &amp; 11274.32&amp; 2818.58  &amp; 101.63 &amp; 0 \\[1ex]
+\text{Residus} &amp; 45 &amp; 1248.04 &amp; 27.73 &amp; \\\hline
+\end{array}
+\]</span></p>
+<p>Vegem un altre exemple.</p>
+
+<div class="example">
+<p><span id="exm:ANOVAterapgen" class="example"><strong>Exemple 1.5  </strong></span>Disposam de quatre tractaments genètics diferents, numerats de l’1 al 4, per corregir un cert gen defectuós responsable d’una malaltia. Els investigadors volen saber si els quatre tractaments tenen una eficàcia similar o no. Per contrastar-ho, en un assaig clínic es varen prendre 20 pacients amb aquesta malaltia, els repartiren aleatòriament en 4 grups de 5 malalts cadascun, i assignaren de forma aleatòria un dels quatre tractaments a cada grup. Després d’aplicar el tractament, es va mesurar a cada pacient l’expressió del gen defectuós sota estudi.</p>
+</div>
+
+<p>Les dades obtingudes varen ser</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\text{Tractament}\\
+\begin{array}{llll}
+1 &amp; 2 &amp; 3 &amp; 4 \\
+\hline
+96 &amp; 93 &amp; 70 &amp;  78 \\
+99 &amp; 90 &amp; 90 &amp; 87 \\
+100 &amp; 75 &amp; 84 &amp; 57 \\
+104 &amp; 80 &amp; 76 &amp; 66  \\
+84 &amp; 90 &amp; 78 &amp; 76
+\end{array}
+\end{array}
+\]</span></p>
+
+<div class="rmdexercici">
+Efectuau a mà l’ANOVA d’1 via d’aquestes dades.
+</div>
+
+<p>Els resultats parcials us haurien de donar:</p>
+<ul>
+<li><p><span class="math inline">\(N=20\)</span>, <span class="math inline">\(k=4\)</span>,</p></li>
+<li><p>Les mitjanes: <span class="math inline">\(\overline{X}_{1}=96.6\)</span>, <span class="math inline">\(\overline{X}_{2}=85.6\)</span>, <span class="math inline">\(\overline{X}_{3}=79.6\)</span>, <span class="math inline">\(\overline{X}_{4}=72.8\)</span>, <span class="math inline">\(\overline{X}=83.65\)</span></p></li>
+<li><p>Les sumes de quadrats: <span class="math inline">\(SS_{Total}=2766.55\)</span>, <span class="math inline">\(SS_{Tr}=1528.15\)</span>, <span class="math inline">\(SS_E=1238.4\)</span></p></li>
+<li><p>Els quadrats mitjans: <span class="math inline">\(MS_{Tr}=509.4\)</span>, <span class="math inline">\(MS_{E}=77.4\)</span></p></li>
+<li><p>L’estadístic de contrast, <span class="math inline">\(F=6.6\)</span></p></li>
+<li><p>El p-valor: <span class="math inline">\(P(F_{3,16})&gt;6.6=\texttt{1-pf(6.6,3,16)}=0.004\)</span></p></li>
+<li><p>La taula de l’ANOVA
+<span class="math display">\[
+\begin{array}{llllll}
+\hline
+\text{Origen de la}&amp;\text{Graus de}&amp;\text{Sumes de}&amp;\text{Quadrats} &amp; \text{Estadístic de}&amp;\text{p-valor}\\[-0.5ex]
+\text{variabilitat}&amp;\text{llibertat}&amp;\text{quadrats}&amp;\text{mitjans}&amp;\text{contrast} &amp; \\\hline
+\text{Nivells} &amp; 3&amp; 1528.15 &amp;  509.4 &amp; 6.6  &amp;  0.004 \\[1ex]
+\text{Residus} &amp; 16 &amp; 1238.4 &amp;  77.4 &amp; \\\hline
+\end{array}
+\]</span></p></li>
+</ul>
+<p><em>Conclusió</em>: Hem trobat evidència estadísticament significativa que les quatre teràpies no tenen totes la mateixa eficàcia mitjana (ANOVA, p-valor 0.004).</p>
+</div>
+<div id="amb-r" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Amb R</h3>
+<p>Per realitzar una ANOVA, s’aplica la funció</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>( ))</code></pre>
+<p>a la fórmula que separa les dades numèriques segons els nivells del factor (<strong>ha de ser un factor</strong>). Si la fórmula només especifica els nom de les variables, s’hi ha d’indicar el nom del <em>dataframe</em> amb el paràmetre <code>data</code>.</p>
+<p>Per exemple, l’ANOVA de l’Exemple <a href="anova.html#exm:CO2">1.1</a> s’obté amb</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(CO2<span class="op">$</span>Inc<span class="op">~</span>CO2<span class="op">$</span>Pre))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## CO2$Pre      4  11274  2818.6   101.6 &lt;2e-16 ***
+## Residuals   45   1248    27.7                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>o, equivalentment, amb</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(Inc<span class="op">~</span>Pre,<span class="dt">data=</span>CO2))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Pre          4  11274  2818.6   101.6 &lt;2e-16 ***
+## Residuals   45   1248    27.7                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>D’aquesta manera obtenima la taula de l’ANOVA que hem explicat fa una estona. El valor de <code>Pr(&gt; F)</code> és el p-valor del contrast.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-50" class="example"><strong>Exemple 1.6  </strong></span>Per realitzar l’ANOVA de l’Exemple <a href="anova.html#exm:ANOVAterapgen">1.5</a>, primer hem d’entrar les dades en un <em>dataframe</em>. Un altre cop, entrarem les dades per fileres i per tant els indicadors dels tractaments s’han d’entrar com el vector (1,2,3,4) repetit 5 vegades.</p>
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r">Expr=<span class="kw">c</span>(<span class="dv">96</span>,<span class="dv">93</span>,<span class="dv">70</span>,<span class="dv">78</span>,<span class="dv">99</span>,<span class="dv">90</span>,<span class="dv">90</span>,<span class="dv">87</span>,<span class="dv">100</span>,<span class="dv">75</span>,<span class="dv">84</span>,<span class="dv">57</span>,<span class="dv">104</span>,<span class="dv">80</span>,<span class="dv">76</span>,<span class="dv">66</span>,<span class="dv">84</span>,<span class="dv">90</span>,<span class="dv">78</span>,<span class="dv">76</span>)
+Tract=<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">5</span>)
+EG=<span class="kw">data.frame</span>(Expr,Tract)
+<span class="kw">summary</span>(<span class="kw">aov</span>(Expr<span class="op">~</span>Tract,<span class="dt">data=</span>EG))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Tract        1   1498  1497.7   21.25 0.000218 ***
+## Residuals   18   1269    70.5                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><img src="Bioestadistica-II_files/figure-html/ups.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>No ha donat el mateix!</p>
+
+<div class="rmderror">
+No hem entrat els tractaments com un factor. Fixau-vos que el nombre de graus de llibertat a la filera dels tractaments en aquesta taula és 1 i no 3, que és el que tocaria.
+</div>
+
+<p>Fem-ho bé:</p>
+<pre class="sourceCode r"><code class="sourceCode r">Expr=<span class="kw">c</span>(<span class="dv">96</span>,<span class="dv">93</span>,<span class="dv">70</span>,<span class="dv">78</span>,<span class="dv">99</span>,<span class="dv">90</span>,<span class="dv">90</span>,<span class="dv">87</span>,<span class="dv">100</span>,<span class="dv">75</span>,<span class="dv">84</span>,<span class="dv">57</span>,<span class="dv">104</span>,<span class="dv">80</span>,<span class="dv">76</span>,<span class="dv">66</span>,<span class="dv">84</span>,<span class="dv">90</span>,<span class="dv">78</span>,<span class="dv">76</span>)
+Tract=<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">5</span>))
+EG=<span class="kw">data.frame</span>(Expr,Tract)
+<span class="kw">str</span>(EG)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    20 obs. of  2 variables:
+##  $ Expr : num  96 93 70 78 99 90 90 87 100 75 ...
+##  $ Tract: Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 2 3 4 1 2 3 4 1 2 ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(EG)</code></pre>
+<pre><code>##   Expr Tract
+## 1   96     1
+## 2   93     2
+## 3   70     3
+## 4   78     4
+## 5   99     1
+## 6   90     2</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(Expr<span class="op">~</span>Tract,<span class="dt">data=</span>EG))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## Tract        3   1528   509.4   6.581 0.00417 **
+## Residuals   16   1238    77.4                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="comparacions-posteriors-per-parelles" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Comparacions posteriors per parelles</h3>
+<p>Si hem rebutjat la hipòtesi nul·la <span class="math inline">\(H_0:\mu_1=\cdots =\mu_k\)</span>, podem demanar-nos quins són els tractaments que donen mitjanes diferents.
+Això es pot fer de diverses maneres, aquí veurem la més “òbvia”: comparar totes les parelles de mitjanes per mitjà de tests t.
+És a dir, per a cada parell de tractaments, realitzar el contrast
+<span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0 : \mu_i=\mu_j \\
+H_1 : \mu_i\neq\mu_j
+\end{array}
+\right.
+\]</span>
+L’estadístic de cada contrast és ara
+<span class="math display">\[
+T=\frac{\overline{X}_{i} - \overline{X}_{j}}{\sqrt{{MS_E}\cdot (\frac{1}{n_i}
++\frac{1}{n_j})}}
+\]</span>
+que, si la hipòtesi nul·la d’aquest contrast és vertadera, segueix una distribució <span class="math inline">\(t\)</span> de Student amb <span class="math inline">\(N-k\)</span> graus de llibertat, <span class="math inline">\(t_{N-k}\)</span>.</p>
+
+<div class="rmdcorbes">
+<p>Tots aquests contrastos per parelles serien tests t amb mostres independents i la mateixa variància. Per ventura alguns recordeu que la fórmula que us hem explicat al tema de Contrastos paramètrics per a aquests tests no és aquesta, sinó
+<span class="math display">\[
+T=\frac{\overline{X}_i-\overline{X}_j}{\sqrt{
+\frac{(n_i-1)\widetilde{S}_i^2+(n_j-1)\widetilde{S}_j^2}{n_i+n_j-2}\cdot \Big(\frac{1}{n_i}+\frac{1}{n_j}\Big)}} 
+\]</span>
+que, si <span class="math inline">\(\mu_i=\mu_j\)</span> és vertadera, té distribució <span class="math inline">\(t_{n_i+n_j-2}\)</span>. En aquesta fórmula, el factor
+<span class="math display">\[
+\frac{(n_i-1)\widetilde{S}_i^2+(n_j-1)\widetilde{S}_j^2}{n_i+n_j-2}
+\]</span>
+dins l’arrel quadrada del denominador estima la variància comuna de <span class="math inline">\(X_i\)</span> i <span class="math inline">\(X_j\)</span>.</p>
+Però en una ANOVA tenim més dades (les mostres de tots els tractaments, no només d’una parella) i les podem emprar totes per estimar la variància comuna de tots els tractaments. Com ja hem dit, aquesta estimació és <span class="math inline">\(MS_E\)</span>, que és el que apareix ara dins l’arrel quadrada del denominador. I com que hem emprat més dades per estimar aquesta variància, també canvia el nombre de graus de llibertat.
+</div>
+
+<p>El p-valor de cada contrast serà <span class="math inline">\(2P(t_{N-k}\geqslant|t_{i,j}|)\)</span>, on <span class="math inline">\(t_{i,j}\)</span> és el valor que hi pren aquest estadístic <span class="math inline">\(T\)</span>.</p>
+<p>Ara bé, observau que d’aquesta manera realitzam <span class="math inline">\(\binom{k}{2}\)</span> contrastos.</p>
+
+<div class="rmdcaution">
+Si es realitzen <span class="math inline">\(c\)</span> contrastos amb nivell de significació <span class="math inline">\(\alpha\)</span>, la probabilitat d’Error de Tipus I a qualcun és més gran que <span class="math inline">\(\alpha\)</span>: de fet, és <span class="math inline">\(1-(1-\alpha)^c\)</span>.
+</div>
+
+<p>Per exemple, a l’Exemple <a href="anova.html#exm:CO2">1.1</a>, si realitzam els <span class="math inline">\(c=\binom{5}{2}=10\)</span> contrastos (tothom contra tothom) amb nivell de significació <span class="math inline">\(\alpha =0.05\)</span>, la probabilitat de cometre almenys un Error de Tipus I a qualcun és <span class="math inline">\(1-(1-0.05)^{10} \approx 0.4\)</span>.</p>
+<p>Per tant, haurem de reduir el nivell de significació de cada contrast per que la probabilitat global de cometre <strong>qualque</strong> Error de Tipus I sigui <span class="math inline">\(\alpha\)</span>. O, equivalentement, augmentar (s’en diu <strong>ajustar</strong>) el p-valor de cada contrast abans de comparar-lo amb l’<span class="math inline">\(\alpha\)</span> global fixat.</p>
+<p>Tot seguit explicam dos d’aquests mètodes d’ajust de p-valors.</p>
+<div id="metode-de-bonferroni" class="section level4">
+<h4><span class="header-section-number">1.2.3.1</span> Mètode de Bonferroni</h4>
+<p>El mètode d’ajust de p-valors més popular és el <strong>de Bonferroni</strong>. Emprant que <span class="math inline">\(1-(1-x)^c \approx c\cdot x\)</span>, si volem efectuar <span class="math inline">\(c\)</span> contrastos amb nivell de significació (global) <span class="math inline">\(\alpha\)</span>,</p>
+<blockquote>
+<p>realitzam cada contrast amb nivell de significació <span class="math inline">\(\alpha/c\)</span></p>
+</blockquote>
+<p>i així el nivell de significació global serà aproximadament <span class="math inline">\(c\cdot \alpha/c=\alpha\)</span>. O, equivalentment</p>
+<blockquote>
+<p>multiplicam el p-valor de cada contrast per <span class="math inline">\(c\)</span> abans de comparar-lo amb el nivell de significació <span class="math inline">\(\alpha\)</span></p>
+</blockquote>
+<p>Les dues accions són equivalents, perquè
+<span class="math display">\[
+p&lt;\alpha/c \Longleftrightarrow c\cdot p&lt;\alpha
+\]</span></p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-57" class="example"><strong>Exemple 1.7  </strong></span>A l’Exemple <a href="anova.html#exm:CO2">1.1</a>, si realitzam els 10 contrastos, per obtenir un nivell de significació global <span class="math inline">\(\alpha =0.05\)</span> amb el mètode de Bonferroni,</p>
+<ul>
+<li>Hem de efectuar cada contrast amb nivell de significació <strong>0.05/10=0.005</strong></li>
+</ul>
+<p>o equivalentment</p>
+<ul>
+<li>Hem de multiplicar cada p-valor per <strong>10</strong></li>
+</ul>
+<p>A l’Exemple 2, si realitzam els 6 contrastos de totes les parelles possibles, per obtenir un nivell de significació global <span class="math inline">\(\alpha =0.05\)</span>,</p>
+<ul>
+<li>Hem de efectuar cada contrast amb nivell de significació <strong>0.05/6=0.0083</strong></li>
+</ul>
+<p>o equivalentment</p>
+<ul>
+<li><p>Hem de multiplicar cada p-valor per <strong>6</strong></p>
+</div></li>
+</ul>
+<p>Amb R,</p>
+<ul>
+<li>Per calcular tots els p-valors de cop (sense ajustar) podem emprar la funció</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(variable numèrica, factor, <span class="dt">p.adjust.method=</span><span class="st">&quot;none&quot;</span>)</code></pre>
+<ul>
+<li>Per calcular tots els p-valors ajustats amb qualque mètode, s’ha d’especificar al paràmetre <code>p.adjust.method</code>. Per exemple, per ajustar-los amb el mètode de Bonferroni, s’hauria d’entrar <code>p.adjust.method=&quot;bonferroni&quot;</code>.</li>
+</ul>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-59" class="example"><strong>Exemple 1.8  </strong></span>Tornem a l’Exemple <a href="anova.html#exm:ANOVAterapgen">1.5</a>.</p>
+</div>
+
+<ul>
+<li>Per obtenir tots els p-valors, que després nosaltres haurem de comparar amb <span class="math inline">\(\alpha/6\)</span>, executam</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(EG<span class="op">$</span>Expr,EG<span class="op">$</span>Tract, <span class="dt">p.adjust.method=</span><span class="st">&quot;none&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  EG$Expr and EG$Tract 
+## 
+##   1       2       3      
+## 2 0.06554 -       -      
+## 3 0.00756 0.29688 -      
+## 4 0.00058 0.03522 0.23937
+## 
+## P value adjustment method: none</code></pre>
+<ul>
+<li>Per obtenir tots els p-valors ajustats segons Bonferroni, que després nosaltres haurem de comparar amb <span class="math inline">\(\alpha\)</span>, entram</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(EG<span class="op">$</span>Expr,EG<span class="op">$</span>Tract,<span class="dt">p.adjust.method=</span><span class="st">&quot;bonferroni&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  EG$Expr and EG$Tract 
+## 
+##   1      2      3     
+## 2 0.3933 -      -     
+## 3 0.0453 1.0000 -     
+## 4 0.0035 0.2113 1.0000
+## 
+## P value adjustment method: bonferroni</code></pre>
+<p>En la primera execució de <code>pairwise.t.test</code>, els únics p-valors per davall de <span class="math inline">\(0.05/6=0.0083\)</span> han estat els dels parells (1,3) i (1,4).
+En la segona, els únics p-valors per davall de 0.05 han estat també els dels parells (1,3) i (1,4). Casualitat? No, havien de coincidir les conclusions, perquè les dues tècniques són equivalents.</p>
+<p><em>Conclusió</em>: Hem trobat evidència estadísticament significativa que la teràpia 1 té una eficàcia mitjana diferent de la de les teràpies 3 i 4 (ANOVA d’1 via, test posterior de Bonferroni, p-valors 0.0453 i 0.0035, respectivament), i no trobam evidència estadísticament significativa de cap altra diferència en les eficàcies mitjanes.</p>
+</div>
+<div id="metode-de-holm" class="section level4">
+<h4><span class="header-section-number">1.2.3.2</span> Mètode de Holm</h4>
+<p>Un altre mètode popular d’ajust de p-valors, més potent que el de Bonferroni, i que de fet és el mètode que empra R és el <strong>mètode de Holm</strong>, que funciona bàsicament de la forma següent:</p>
+<ol style="list-style-type: decimal">
+<li><p>Siguin <span class="math inline">\(C_{1},\ldots ,C_{c}\)</span> els contrastos per parelles que es volen realitzar i <span class="math inline">\(p_{1},\ldots ,p_{c}\)</span> els p-valors corresponents</p></li>
+<li><p>Ordenam aquests p-valors en ordre creixent <span class="math inline">\(p_{(1)}&lt; \cdots&lt; p_{(c)}\)</span> i reenumeram consistentment els contrastos <span class="math inline">\(C_{(1)},\ldots, C_{(c)}\)</span></p></li>
+<li><p>Per a cada <span class="math inline">\(j=1,\ldots,c\)</span>, calculam el <strong>p-valor ajustat</strong> <span class="math inline">\(\widetilde{p}_{(j)}=(c+1-j)\cdot p_{(j)}\)</span></p></li>
+<li><p>Aleshores rebutjam la hipòtesi nul·la als contrastos <span class="math inline">\(C_{(j)}\)</span> on <span class="math inline">\(\widetilde{p}_{(j)}&lt;\alpha\)</span></p></li>
+</ol>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-62" class="example"><strong>Exemple 1.9  </strong></span>Anem a fer a mà l’ajust dels p-valors segons Holm a l’Exemple <a href="anova.html#exm:ANOVAterapgen">1.5</a>.</p>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>Taula amb els p-valors dels contrastos
+<span class="math display">\[
+\begin{array}{c|c}
+\text{Contrast} &amp; \text{p-valor} \\ \hline
+\text{1-2} &amp; 0.06554\\
+\text{1-3} &amp; 0.00756\\
+\text{1-4} &amp; 0.00058\\
+\text{2-3} &amp;0.29688\\
+\text{2-4} &amp; 0.03522\\
+\text{3-4} &amp; 0.23937
+\end{array}
+\]</span></p></li>
+<li><p>Ordenam en ordre creixent del p-valor</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{array}{c|c}
+\text{Contrast} &amp; \text{p-valor} \\ \hline
+\text{1-4} &amp; 0.00058\\
+\text{2-3} &amp; 0.00756\\
+\text{2-4} &amp; 0.03522\\
+\text{1-2} &amp; 0.06554\\
+\text{3-4} &amp; 0.23937\\
+\text{2-3} &amp;0.29688\\
+\end{array}
+\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Ajustam: per a cada <span class="math inline">\(j\)</span>, multiplicam el <span class="math inline">\(j\)</span>-èsim p-valor (en ordre decreixent) per <span class="math inline">\(6+1-j\)</span></li>
+</ol>
+<p><span class="math display">\[
+\begin{array}{c|cc}
+\text{Contrast} &amp; \text{p-valor} &amp;  \text{p-valor ajustat}\\ \hline
+\text{1-4} &amp; 0.00058 &amp; 6\times 0.00058 = 0.00348\\
+\text{1-3} &amp; 0.00756 &amp; 5\times 0.00756 = 0.03780\\
+\text{2-4} &amp; 0.03522 &amp; 4\times 0.03522 = 0.14088\\
+\text{1-2} &amp; 0.06554 &amp; 3\times 0.06554 =  0.19662\\
+\text{3-4} &amp; 0.23937 &amp; 2\times 0.23937 = 0.47874\\
+\text{2-3} &amp; 0.29688 &amp; 1\times 0.29688 = 0.29688\\
+\end{array}
+\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Comparam els p-valors ajustats amb <span class="math inline">\(\alpha\)</span>. En aquest cas, amb <span class="math inline">\(\alpha=0.05\)</span> arribam a la mateixa conclusió que amb el mètode de Bonferroni: concloem que <span class="math inline">\(\mu_1\neq \mu_4\)</span> i <span class="math inline">\(\mu_1\neq \mu_3\)</span> i que no podem rebutjar que les altres parelles de mitjanes siguin iguals</li>
+</ol>
+<p>Amb R, s’ha d’especificar a la funció <code>pairwise.t.test</code> el paràmetre <code>p.adjust.method=&quot;holm&quot;</code>, o no especificar aquest paràmetre perquè “holm” és el valor per defecte de <code>p.adjust.method</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(EG<span class="op">$</span>Expr,EG<span class="op">$</span>Tract,<span class="dt">p.adjust.method=</span><span class="st">&quot;holm&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  EG$Expr and EG$Tract 
+## 
+##   1      2      3     
+## 2 0.1966 -      -     
+## 3 0.0378 0.4787 -     
+## 4 0.0035 0.1409 0.4787
+## 
+## P value adjustment method: holm</code></pre>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-64" class="example"><strong>Exemple 1.10  </strong></span>Els tests posteriors per parelles de l’Exemple <a href="anova.html#exm:CO2">1.1</a> amb el mètode de Bonferroni i de Holm són:</p>
+</div>
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(CO2<span class="op">$</span>Inc,CO2<span class="op">$</span>Pre,<span class="dt">p.adjust.method=</span><span class="st">&quot;bonferroni&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  CO2$Inc and CO2$Pre 
+## 
+##      0.0     0.08    0.29    0.50   
+## 0.08 1.4e-05 -       -       -      
+## 0.29 1.6e-11 0.00186 -       -      
+## 0.50 &lt; 2e-16 3.0e-10 0.00028 -      
+## 0.86 &lt; 2e-16 2.5e-15 6.6e-10 0.00389
+## 
+## P value adjustment method: bonferroni</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(CO2<span class="op">$</span>Inc,CO2<span class="op">$</span>Pre,<span class="dt">p.adjust.method=</span><span class="st">&quot;holm&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  CO2$Inc and CO2$Pre 
+## 
+##      0.0     0.08    0.29    0.50   
+## 0.08 5.6e-06 -       -       -      
+## 0.29 1.2e-11 0.00037 -       -      
+## 0.50 &lt; 2e-16 1.8e-10 8.4e-05 -      
+## 0.86 &lt; 2e-16 2.0e-15 3.3e-10 0.00039
+## 
+## P value adjustment method: holm</code></pre>
+</div>
+</div>
+<div id="verificacio-de-les-condicions" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> Verificació de les condicions</h3>
+<p>Recordau que per a que la conclusió d’una ANOVA d’1 via tengui sentit:</p>
+<ol style="list-style-type: decimal">
+<li><p>Les mostres de cada nivell han de ser aleatòries simples i independents i almenys una ha de tenir més d’un element.</p></li>
+<li><p>La població definida per cada nivell ha de ser normal. Això es contrasta amb algun contrast de normalitat.</p></li>
+<li><p>Totes aquestes poblacions han de tenir la mateixa variància (homocedasticitat).</p></li>
+</ol>
+<p>El punt (1) és responsabilitat de l’investigador, però (2) i (3) s’han de contrastar. Si fallen, sobretot si falla (3), no es pot usar una ANOVA: convé emprar un test no paramètric.</p>
+<p>La manera més popular de contrastar l’homocedasticitat quan acceptam que les mostres provenen de distribucions normals és amb el <strong>test de Bartlett</strong>, implementat en R en la funció <code>bartlett.test</code>. Per exemple, per contrastar l’homocedasticitat dels increments de volum cel·lular sota diferents pressions de CO<sub>2</sub> de l’Exemple <a href="anova.html#exm:CO2">1.1</a>, entraríem:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(CO2<span class="op">$</span>Inc<span class="op">~</span>CO2<span class="op">$</span>Pre)</code></pre>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  CO2$Inc by CO2$Pre
+## Bartlett&#39;s K-squared = 1.0701, df = 4, p-value = 0.899</code></pre>
+<p>Podem acceptar que les variàncies de les subpoblacions definides pels percentatges d’increment del volum cel·lular sota les diferents pressions de CO<sub>2</sub> considerades són totes iguals.</p>
+</div>
+<div id="test-no-parametric" class="section level3">
+<h3><span class="header-section-number">1.2.5</span> Test no paramètric</h3>
+<p>Si en un experiment de disseny d’ANOVA d’1 via no podem emprar una ANOVA perquè no se satisfaci la normalitat de les poblacions o, sobretot, l’homocedasticitat, cal emprar un test no paramètric. El més popular es el <strong>test de Kruskal-Wallis</strong>, que generalitza el test de Mann-Whitney a més de 2 poblacions igual que l’ANOVA generalitza el test t; es fa amb la funció <code>kruskal.test</code>.</p>
+<p>Per exemple, per aplicar-lo a les dades de l’Exemple <a href="anova.html#exm:CO2">1.1</a>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kruskal.test</span>(CO2<span class="op">$</span>Inc<span class="op">~</span>CO2<span class="op">$</span>Pre)</code></pre>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  CO2$Inc by CO2$Pre
+## Kruskal-Wallis chi-squared = 44.716, df = 4, p-value = 4.555e-09</code></pre>
+<p>Seguim concloent que no totes les mitjanes (en realitat, les <strong>medianes</strong>) són iguals.</p>
+<p>Si el test de Kruskal-Wallis permet rebutjar la igualtat de mitjanes, i voleu determinar quins parells són diferents, disposau de la funció <code>pairwise.wilcox.test</code> que efectua contrastos per parelles de Mann-Whitney (amb el paràmetre <code>paired=FALSE</code>). Té la mateixa sintaxi que <code>pairwise.t.test</code> i com en aquella funció, el mètode d’ajust dels p-valors s’hi entra amb el paràmetre <code>p.adjust.method</code>, el valor per defecte del qual és el mètode de Holm.</p>
+<p>Per exemple, per realitzar tots els contrastos de Mann-Whitney en l’exemple del CO<sub>2</sub> emprant el mètode d’ajust de Bonferroni, entram:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.wilcox.test</span>(CO2<span class="op">$</span>Inc, CO2<span class="op">$</span>Pre, <span class="dt">paired=</span><span class="ot">FALSE</span>, 
+      <span class="dt">p.adjust.method=</span><span class="st">&quot;bonferroni&quot;</span>)</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test 
+## 
+## data:  CO2$Inc and CO2$Pre 
+## 
+##      0.0     0.08    0.29    0.50   
+## 0.08 0.00211 -       -       -      
+## 0.29 0.00011 0.01050 -       -      
+## 0.50 0.00011 0.00011 0.00325 -      
+## 0.86 0.00011 0.00011 0.00011 0.03186
+## 
+## P value adjustment method: bonferroni</code></pre>
+<p>Concloem que els percentatges mitjans d’increment són tots diferents.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"download": ["pdf", "epub"]
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
