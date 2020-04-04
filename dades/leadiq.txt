@@ -7,10 +7,10 @@
 "Far"	94
 "Far"	115
 "Far"	97
-"Far"	128
+"Far"	118
 "Far"	99
 "Far"	118
-"Far"	141
+"Far"	121
 "Far"	80
 "Far"	101
 "Far"	125
@@ -81,7 +81,7 @@
 "Near"	99
 "Near"	105
 "Near"	106
-"Near"	105
+"Near"	115
 "Near"	85
 "Near"	87
 "Near"	98
@@ -105,7 +105,7 @@
 "Near"	80
 "Near"	94
 "Near"	88
-"Near"	104
+"Near"	114
 "Near"	88
 "Near"	88
 "Near"	112
