@@ -17,7 +17,7 @@
 "Far"	96
 "Far"	99
 "Far"	96
-"Far"	55
+"Far"	58
 "Far"	99
 "Far"	88
 "Far"	120
