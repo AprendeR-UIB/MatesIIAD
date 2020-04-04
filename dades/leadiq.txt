@@ -79,7 +79,7 @@
 "Near"	107
 "Near"	91
 "Near"	99
-"Near"	115
+"Near"	105
 "Near"	106
 "Near"	105
 "Near"	85
@@ -113,7 +113,7 @@
 "Near"	101
 "Near"	92
 "Near"	71
-"Near"	114
+"Near"	104
 "Near"	91
 "Near"	85
 "Near"	76
